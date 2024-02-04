@@ -103,20 +103,32 @@
                         data: dataSource
                     });      
                 }
-                function getBudget(){
-                    axios.get('/budget')
-                    .then(function(res){
-                        console.log(res);
-                        for ( var i = 0; i < res.data.myBudget.length; i++) {
-                            dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
-                            //dataSource.datasets[0].backgroundColor[i] = res.data.myMonthlyBudget[i].color;
-                            dataSource.labels[i] = res.data.myBudget[i].title;
-                        }
-                        createChart();
-                    });
-                }
+                function createDonutChart() {
+            var ctx = document.getElementById('donutChart').getContext('2d');
+            var myDonutChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: donutDataSource
+            });
+        }
+        function getBudget() {
+            axios.get('http://localhost:3000/budget')
+                .then(function (res) {
+                    for (var i = 0; i < res.data.myBudget.length; i++) {
+                        // Update pie chart data
+                        pieDataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
+                        pieDataSource.labels[i] = res.data.myBudget[i].title;
+                        // Update donut chart data
+                        donutDataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
+                        donutDataSource.labels[i] = res.data.myBudget[i].title;
+                    }
+                    createPieChart();
+                    createDonutChart();
+                });      
+        }
+        getBudget();
                 
-                getBudget();
+                
+               
     </script>
 
 </body>
