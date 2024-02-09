@@ -1,0 +1,35 @@
+{
+    "myBudget":[
+        {
+            "title": "electricity",
+            "budget": 90
+        },
+        {
+            "title": "Rent",
+            "budget": 370
+        },
+        {
+            "title": "Groceries",
+            "budget": 90
+        },
+        {
+            "title": "Gas",
+            "budget": 30
+        },
+        {
+            "title": "Restaurants",
+            "budget": 80
+        },
+        {
+            "title": "Travel",
+            "budget": 40
+        },    {
+            "title": "Mobile & Internet Bill",
+            "budget": 70
+        },
+        {
+            "title":"Eat Out",
+            "budget":25
+        }
+    ]
+}
