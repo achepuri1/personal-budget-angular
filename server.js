@@ -1,13 +1,30 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = 3000;
 
-app.use('/',express.static('public'));
+//app.use('/',express.static('public'));
+app.use(cors());
 
-app.get('/hello',(req,res)=>{
-    res.send('Hello World !');
-});
-const budget = require('./budget-data.json')
+const budget ={
+    myBudget: [
+        {
+            title:"Eat Out",
+            budget: 25
+        },
+        {
+            title:"Rent",
+            budget:275
+        },
+        {
+            title:"Grocery",
+            budget: 110
+        },
+    ]
+};
+
+
+
 
 app.get('/budget',(req,res)=>{
     res.json(budget);
@@ -15,5 +32,5 @@ app.get('/budget',(req,res)=>{
 
 
 app.listen(port,()=>{
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`API served at http://localhost:${port}`);
 });
